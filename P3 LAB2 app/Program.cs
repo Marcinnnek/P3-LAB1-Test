@@ -25,14 +25,14 @@ namespace P3_LAB2_app
                 try
                 {
                     ReadData();
-                    Delta();
-                    CheckDelta(ref nZeroRoots);
-                    Roots();
                 }
                 catch (FormatException)
                 {
                     Console.WriteLine("Podaj poprawne liczby");
                 }
+                Delta();
+                CheckDelta(ref nZeroRoots);
+                Roots();
             }
 
 
