@@ -27,9 +27,9 @@ namespace P3_LAB2_app
             try
             {
                 Tuple<double, double, double> abc = ReadData();
-                double a = abc.Item1;
-                double b = abc.Item2;
-                double c = abc.Item3;
+                //double a = abc.Item1;
+                //double b = abc.Item2;
+                //double c = abc.Item3;
                 double delta = Delta(abc);
                 CheckDelta(ref nZeroRoots, delta);
                 Roots(abc, nZeroRoots, delta);
