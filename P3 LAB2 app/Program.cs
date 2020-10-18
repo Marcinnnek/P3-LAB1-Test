@@ -10,8 +10,8 @@ namespace P3_LAB2_app
         static double c;
         static double delta;
 
-        static wynik nZeroRoots;
-        enum wynik
+        static Wynik nZeroRoots;
+        enum Wynik
         {
             JednoMiejsceZerowe,
             DwaMiejscaZerowe,
@@ -20,7 +20,8 @@ namespace P3_LAB2_app
 
         static void Main(string[] args)
         {
-            while (true)
+
+            do
             {
                 try
                 {
@@ -33,23 +34,22 @@ namespace P3_LAB2_app
                 Delta();
                 CheckDelta(ref nZeroRoots);
                 Roots();
-            }
+                Console.Write("Nacisnij ESC aby zatrzymać.");
+            } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
 
-
-
-            static void CheckDelta(ref wynik value)
+            static void CheckDelta(ref Wynik value)
             {
                 if (delta < 0)
                 {
-                    value = wynik.BrakMiejscZerowych;
+                    value = Wynik.BrakMiejscZerowych;
                 }
                 else if (delta == 0)
                 {
-                    value = wynik.JednoMiejsceZerowe;
+                    value = Wynik.JednoMiejsceZerowe;
                 }
-                else if (delta >= 0)
+                else if (delta > 0)
                 {
-                    value = wynik.DwaMiejscaZerowe;
+                    value = Wynik.DwaMiejscaZerowe;
                 }
             }
         }
@@ -58,23 +58,23 @@ namespace P3_LAB2_app
         {
             switch (nZeroRoots)
             {
-                case wynik.JednoMiejsceZerowe:
+                case Wynik.JednoMiejsceZerowe:
                     {
                         Console.WriteLine("Jedno miejsce zerowe: ");
                         double xZero = (-b / (2 * a));
                         Console.WriteLine($"X_0 = {xZero}");
                         break;
                     }
-                case wynik.DwaMiejscaZerowe:
+                case Wynik.DwaMiejscaZerowe:
                     {
                         Console.WriteLine("Dwa miejsca zerowe: ");
                         double xOne = ((-b + Math.Sqrt(delta)) / (2 * a));
                         double xTwo = ((-b - Math.Sqrt(delta)) / (2 * a));
-                        Console.WriteLine($"X_1 = {xOne, 3:N3}");
-                        Console.WriteLine($"X_2 = {xTwo, 3:N3}");
+                        Console.WriteLine($"X_1 = {xOne,3:N3}");
+                        Console.WriteLine($"X_2 = {xTwo,3:N3}");
                         break;
                     }
-                case wynik.BrakMiejscZerowych:
+                case Wynik.BrakMiejscZerowych:
                     {
                         Console.WriteLine($"Brak miejsc zerowych delta = {delta}, mniejsza od 0. ");
                         break;
